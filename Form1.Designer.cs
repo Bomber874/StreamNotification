@@ -39,10 +39,11 @@
             this.createLuaFile.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.createLuaFile.Location = new System.Drawing.Point(0, 0);
             this.createLuaFile.Name = "createLuaFile";
-            this.createLuaFile.Size = new System.Drawing.Size(784, 41);
+            this.createLuaFile.Size = new System.Drawing.Size(430, 41);
             this.createLuaFile.TabIndex = 0;
             this.createLuaFile.Text = "Создать lua скрипт";
             this.createLuaFile.UseVisualStyleBackColor = true;
+            this.createLuaFile.Click += new System.EventHandler(this.createLuaFile_Click);
             // 
             // openSettings
             // 
@@ -50,7 +51,7 @@
             this.openSettings.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.openSettings.Location = new System.Drawing.Point(0, 41);
             this.openSettings.Name = "openSettings";
-            this.openSettings.Size = new System.Drawing.Size(784, 40);
+            this.openSettings.Size = new System.Drawing.Size(430, 40);
             this.openSettings.TabIndex = 1;
             this.openSettings.Text = "Настройка оповещения";
             this.openSettings.UseVisualStyleBackColor = true;
@@ -62,20 +63,22 @@
             this.testWebhook.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.testWebhook.Location = new System.Drawing.Point(0, 81);
             this.testWebhook.Name = "testWebhook";
-            this.testWebhook.Size = new System.Drawing.Size(784, 41);
+            this.testWebhook.Size = new System.Drawing.Size(430, 41);
             this.testWebhook.TabIndex = 2;
             this.testWebhook.Text = "Отправить тестовое оповещение";
             this.testWebhook.UseVisualStyleBackColor = true;
+            this.testWebhook.Click += new System.EventHandler(this.testWebhook_Click);
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(784, 121);
+            this.ClientSize = new System.Drawing.Size(430, 121);
             this.Controls.Add(this.testWebhook);
             this.Controls.Add(this.openSettings);
             this.Controls.Add(this.createLuaFile);
-            this.MaximumSize = new System.Drawing.Size(800, 160);
+            this.MaximumSize = new System.Drawing.Size(446, 160);
+            this.MinimumSize = new System.Drawing.Size(446, 160);
             this.Name = "Form1";
             this.Text = "Form1";
             this.ResumeLayout(false);

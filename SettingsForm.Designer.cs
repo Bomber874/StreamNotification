@@ -32,13 +32,13 @@
             this.urlText = new System.Windows.Forms.TextBox();
             this.pasteButton = new System.Windows.Forms.Button();
             this.showButton = new System.Windows.Forms.Button();
-            this.nameBox = new System.Windows.Forms.TextBox();
+            this.nameText = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
-            this.iconURL = new System.Windows.Forms.TextBox();
+            this.iconText = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
             this.textText = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
-            this.button1 = new System.Windows.Forms.Button();
+            this.saveButton = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // label1
@@ -56,8 +56,10 @@
             this.urlText.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.urlText.Location = new System.Drawing.Point(13, 37);
             this.urlText.Name = "urlText";
+            this.urlText.PasswordChar = '*';
             this.urlText.Size = new System.Drawing.Size(329, 26);
             this.urlText.TabIndex = 1;
+            this.urlText.Text = "afasd";
             // 
             // pasteButton
             // 
@@ -68,6 +70,7 @@
             this.pasteButton.TabIndex = 2;
             this.pasteButton.Text = "Вставить из буфера";
             this.pasteButton.UseVisualStyleBackColor = true;
+            this.pasteButton.Click += new System.EventHandler(this.pasteButton_Click);
             // 
             // showButton
             // 
@@ -78,14 +81,15 @@
             this.showButton.TabIndex = 3;
             this.showButton.Text = "Показать";
             this.showButton.UseVisualStyleBackColor = true;
+            this.showButton.Click += new System.EventHandler(this.showButton_Click);
             // 
-            // nameBox
+            // nameText
             // 
-            this.nameBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.nameBox.Location = new System.Drawing.Point(13, 122);
-            this.nameBox.Name = "nameBox";
-            this.nameBox.Size = new System.Drawing.Size(329, 26);
-            this.nameBox.TabIndex = 5;
+            this.nameText.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.nameText.Location = new System.Drawing.Point(13, 122);
+            this.nameText.Name = "nameText";
+            this.nameText.Size = new System.Drawing.Size(329, 26);
+            this.nameText.TabIndex = 5;
             // 
             // label2
             // 
@@ -97,13 +101,13 @@
             this.label2.TabIndex = 4;
             this.label2.Text = "Имя вебхука:";
             // 
-            // iconURL
+            // iconText
             // 
-            this.iconURL.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.iconURL.Location = new System.Drawing.Point(13, 175);
-            this.iconURL.Name = "iconURL";
-            this.iconURL.Size = new System.Drawing.Size(329, 26);
-            this.iconURL.TabIndex = 7;
+            this.iconText.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.iconText.Location = new System.Drawing.Point(13, 175);
+            this.iconText.Name = "iconText";
+            this.iconText.Size = new System.Drawing.Size(329, 26);
+            this.iconText.TabIndex = 7;
             // 
             // label3
             // 
@@ -134,27 +138,28 @@
             this.label4.TabIndex = 8;
             this.label4.Text = "Текст оповещения:";
             // 
-            // button1
+            // saveButton
             // 
-            this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.button1.Location = new System.Drawing.Point(13, 364);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(329, 38);
-            this.button1.TabIndex = 10;
-            this.button1.Text = "Сохранить";
-            this.button1.UseVisualStyleBackColor = true;
+            this.saveButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.saveButton.Location = new System.Drawing.Point(13, 364);
+            this.saveButton.Name = "saveButton";
+            this.saveButton.Size = new System.Drawing.Size(329, 38);
+            this.saveButton.TabIndex = 10;
+            this.saveButton.Text = "Сохранить";
+            this.saveButton.UseVisualStyleBackColor = true;
+            this.saveButton.Click += new System.EventHandler(this.saveButton_Click);
             // 
-            // Settings
+            // SettingsForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(353, 409);
-            this.Controls.Add(this.button1);
+            this.Controls.Add(this.saveButton);
             this.Controls.Add(this.textText);
             this.Controls.Add(this.label4);
-            this.Controls.Add(this.iconURL);
+            this.Controls.Add(this.iconText);
             this.Controls.Add(this.label3);
-            this.Controls.Add(this.nameBox);
+            this.Controls.Add(this.nameText);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.showButton);
             this.Controls.Add(this.pasteButton);
@@ -162,7 +167,7 @@
             this.Controls.Add(this.label1);
             this.MaximumSize = new System.Drawing.Size(369, 448);
             this.MinimumSize = new System.Drawing.Size(369, 448);
-            this.Name = "Settings";
+            this.Name = "SettingsForm";
             this.Text = "Settings";
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -175,12 +180,12 @@
         private System.Windows.Forms.TextBox urlText;
         private System.Windows.Forms.Button pasteButton;
         private System.Windows.Forms.Button showButton;
-        private System.Windows.Forms.TextBox nameBox;
+        private System.Windows.Forms.TextBox nameText;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.TextBox iconURL;
+        private System.Windows.Forms.TextBox iconText;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.TextBox textText;
         private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button saveButton;
     }
 }

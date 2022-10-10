@@ -1,10 +1,7 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Collections.Specialized;
-using System.Linq;
 using System.Net;
-using System.Text;
-using System.Threading.Tasks;
+using System.Windows.Forms;
 
 namespace WebhookSenderForOBS
 {
@@ -33,12 +30,33 @@ namespace WebhookSenderForOBS
         /// </summary>
         public void Send()
         {
+            if (!Uri.IsWellFormedUriString(_hookURL, UriKind.Absolute))
+                MessageBox.Show($"Не удалось распознать ссылку на вебхук:\n{_hookURL}", "Ошибка", MessageBoxButtons.OK);
             NameValueCollection webhookInfo = new NameValueCollection();
             webhookInfo.Add("username", _name);
             webhookInfo.Add("avatar_url", _imageURL);
             webhookInfo.Add("content", _text);
 
-            new WebClient().UploadValues(_hookURL, webhookInfo);
+            try 
+            {
+                new WebClient().UploadValues(_hookURL, webhookInfo);
+            }
+            catch (ArgumentException e)
+            {
+                MessageBox.Show($"Некорректная ссылка на вебхук:\n{e.Message}", "Ошибка", MessageBoxButtons.OK);
+            }
+            //catch (ArgumentNullException e)
+            //{
+            //    MessageBox.Show($"Некорректная ссылка на вебхук\n{e.Message}", "Ошибка", MessageBoxButtons.OK);
+            //}
+            catch(WebException e)
+            {
+                if(Uri.IsWellFormedUriString(_imageURL, UriKind.Absolute))
+                    MessageBox.Show($"Ошибка на сервере:\n{e.Message}", "Ошибка", MessageBoxButtons.OK);
+                else
+                    MessageBox.Show($"Кажется эта ссылка на изображение не подходит.\nУказанная ссылка:{_imageURL}", "Ошибка", MessageBoxButtons.OK);
+            }
+            
         }
     }
 }
