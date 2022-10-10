@@ -2,7 +2,7 @@
 
 function on_event(event)
 	if event == obs.OBS_FRONTEND_EVENT_STREAMING_STARTED then
-		os.execute("start WebhookSenderForOBS.exe")
+		os.execute("start WebhookSenderForOBS.exe obs")
 	end
 end
 
