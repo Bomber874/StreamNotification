@@ -3,6 +3,7 @@ using IniParser.Model;
 using System;
 using System.IO;
 using System.Security.Policy;
+using System.Text;
 using System.Windows.Forms;
 
 namespace WebhookSenderForOBS
@@ -43,7 +44,22 @@ namespace WebhookSenderForOBS
         {
             string contents;
             using (var wc = new System.Net.WebClient())
-                contents = wc.DownloadString(url);
+                contents = wc.DownloadString("https://raw.githubusercontent.com/Bomber874/StreamNotification/master/WebHookSender.lua");
+            
+            try
+            {
+                using (FileStream fs = File.Create("StreamNotification/WebHookSender.lua"))
+                {
+                    byte[] info = new UTF8Encoding(true).GetBytes(contents);
+                    fs.Write(info, 0, info.Length);
+                }
+            }
+
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Текст ошибки:\n{ex.ToString()}", "Ошибка", MessageBoxButtons.OK);
+            }
+
         }
     }
 }

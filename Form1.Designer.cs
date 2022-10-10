@@ -80,7 +80,7 @@
             this.MaximumSize = new System.Drawing.Size(446, 160);
             this.MinimumSize = new System.Drawing.Size(446, 160);
             this.Name = "Form1";
-            this.Text = "Form1";
+            this.Text = "Оповещение для дискорда";
             this.ResumeLayout(false);
 
         }
