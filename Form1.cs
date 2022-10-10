@@ -42,6 +42,8 @@ namespace WebhookSenderForOBS
 
         private void createLuaFile_Click(object sender, EventArgs e)
         {
+            if(!Directory.Exists("StreamNotification"))
+                Directory.CreateDirectory("StreamNotification");
             string contents;
             using (var wc = new System.Net.WebClient())
                 contents = wc.DownloadString("https://raw.githubusercontent.com/Bomber874/StreamNotification/master/WebHookSender.lua");
