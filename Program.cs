@@ -5,6 +5,7 @@ using System.Security.Policy;
 using System.Windows.Forms;
 using System.IO;
 using System.Collections.Generic;
+using WebhookSenderForOBS.Properties;
 
 namespace WebhookSenderForOBS
 {

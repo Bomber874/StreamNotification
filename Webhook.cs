@@ -29,16 +29,16 @@ namespace WebhookSenderForOBS
         }
         protected void _Send(string hookURL, string name, string profile, string message)
         {
-            if (!Uri.IsWellFormedUriString(_hookURL, UriKind.Absolute))
-                MessageBox.Show($"Не удалось распознать ссылку на вебхук:\n{_hookURL}", "Ошибка", MessageBoxButtons.OK);
+            if (!Uri.IsWellFormedUriString(hookURL, UriKind.Absolute))
+                MessageBox.Show($"Не удалось распознать ссылку на вебхук:\n{hookURL}", "Ошибка", MessageBoxButtons.OK);
             NameValueCollection webhookInfo = new NameValueCollection();
-            webhookInfo.Add("username", _name);
-            webhookInfo.Add("avatar_url", _imageURL);
-            webhookInfo.Add("content", _text);
+            webhookInfo.Add("username", name);
+            webhookInfo.Add("avatar_url", profile);
+            webhookInfo.Add("content", message.Replace("\\n", Environment.NewLine));
 
             try
             {
-                new WebClient().UploadValues(_hookURL, webhookInfo);
+                new WebClient().UploadValues(hookURL, webhookInfo);
             }
             catch (ArgumentException e)
             {
@@ -50,10 +50,10 @@ namespace WebhookSenderForOBS
             //}
             catch (WebException e)
             {
-                if (Uri.IsWellFormedUriString(_imageURL, UriKind.Absolute))
+                if (Uri.IsWellFormedUriString(profile, UriKind.Absolute))
                     MessageBox.Show($"Ошибка на сервере:\n{e.Message}", "Ошибка", MessageBoxButtons.OK);
                 else
-                    MessageBox.Show($"Кажется эта ссылка на изображение не подходит.\nУказанная ссылка:{_imageURL}", "Ошибка", MessageBoxButtons.OK);
+                    MessageBox.Show($"Кажется эта ссылка на изображение не подходит.\nУказанная ссылка:{profile}", "Ошибка", MessageBoxButtons.OK);
             }
         }
         /// <summary>
