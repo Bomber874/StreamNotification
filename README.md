@@ -1,7 +1,7 @@
 # 1) Настройка программы:
-1.1) Скачайте [готовый проект ](https://github.com/Bomber874/StreamNotification/releases "готовый проект ")
+1.1) Скачайте последнюю [версию программы](https://github.com/Bomber874/StreamNotification/releases "версию программы")
 
-1.2)  Переместите файлы(WebhookSenderForOBS.exe и INIFileParser.dll) по пути: obs-studio\bin\64bit
+1.2)  Переместите файл WebhookSenderForOBS.exe по пути: obs-studio\bin\64bit
 
 1.3) Запустите файл **WebhookSenderForOBS.exe**
 
