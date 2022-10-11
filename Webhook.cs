@@ -1,9 +1,8 @@
-﻿using IniParser.Model;
-using System;
+﻿using System;
+using System.Collections.Generic;
 using System.Collections.Specialized;
 using System.Net;
 using System.Windows.Forms;
-using System.Xml.Linq;
 
 namespace WebhookSenderForOBS
 {
@@ -67,7 +66,7 @@ namespace WebhookSenderForOBS
         /// Отправляет вебхук
         /// </summary>
         /// <param name="settings"></param>
-        public void Send(KeyDataCollection settings)
+        public void Send(Dictionary<string,string> settings)
         {
             _Send(settings["url"], settings["name"], settings["image"], settings["text"]);
         }

@@ -1,9 +1,6 @@
-﻿using IniParser.Model;
-using IniParser;
-using System;
-using System.Text;
+﻿using System;
 using System.Windows.Forms;
-
+using System.Collections.Generic;
 
 namespace WebhookSenderForOBS
 {
@@ -14,13 +11,11 @@ namespace WebhookSenderForOBS
         {
             _type = type;
             InitializeComponent();
-            var parser = new FileIniDataParser();
-
-            IniData data = parser.ReadFile("StreamNotification/config.ini");
-            urlText.Text = data[_type]["url"];
-            nameText.Text = data[_type]["name"];
-            iconText.Text = data[_type]["icon"];
-            textText.Text = data[_type]["text"].Replace("\\n", Environment.NewLine);
+            var data = Settings.Get(_type);
+            urlText.Text = data["url"];
+            nameText.Text = data["name"];
+            iconText.Text = data["icon"];
+            textText.Text = data["text"].Replace("\\n", Environment.NewLine);
         }
 
         private void pasteButton_Click(object sender, EventArgs e)
@@ -44,17 +39,13 @@ namespace WebhookSenderForOBS
 
         private void saveButton_Click(object sender, EventArgs e)
         {
-            var parser = new FileIniDataParser();
-            IniData data = parser.ReadFile("StreamNotification/config.ini", Encoding.UTF8);
-            data[_type]["url"] = urlText.Text;
-            data[_type]["name"] = nameText.Text;
-            data[_type]["icon"] = iconText.Text;
-            // Немного прогадался со способом сохранения текста. ini не поддерживает многострочные значения
-            // Из-за этого теперь нельзя использовать \n в тексте оповещения.
-            // Однако \n и так наверное нельзя использовать, дискорд бы распознал это как перевод строки
-            data[_type]["text"] = textText.Text.Replace(Environment.NewLine, "\\n"); 
-            parser.WriteFile("StreamNotification/config.ini", data);
-            Close();
+
+            Dictionary<string, string> data = new Dictionary<string, string>();
+            data["url"] = urlText.Text;
+            data["name"] = nameText.Text;
+            data["icon"] = iconText.Text;
+            data["text"] = textText.Text;
+            Settings.Save(_type, data);
         }
     }
 }

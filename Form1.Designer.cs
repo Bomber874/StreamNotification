@@ -44,7 +44,7 @@
             this.createLuaFile.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.createLuaFile.Location = new System.Drawing.Point(3, 3);
             this.createLuaFile.Name = "createLuaFile";
-            this.createLuaFile.Size = new System.Drawing.Size(676, 165);
+            this.createLuaFile.Size = new System.Drawing.Size(436, 104);
             this.createLuaFile.TabIndex = 0;
             this.createLuaFile.Text = "Создать lua скрипт";
             this.createLuaFile.UseVisualStyleBackColor = true;
@@ -54,9 +54,9 @@
             // 
             this.openStartSettings.Dock = System.Windows.Forms.DockStyle.Fill;
             this.openStartSettings.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.openStartSettings.Location = new System.Drawing.Point(3, 174);
+            this.openStartSettings.Location = new System.Drawing.Point(3, 113);
             this.openStartSettings.Name = "openStartSettings";
-            this.openStartSettings.Size = new System.Drawing.Size(335, 165);
+            this.openStartSettings.Size = new System.Drawing.Size(215, 104);
             this.openStartSettings.TabIndex = 1;
             this.openStartSettings.Text = "Настройка оповещения\r\nО начале стрима\r\n";
             this.openStartSettings.UseVisualStyleBackColor = true;
@@ -66,11 +66,11 @@
             // 
             this.testStartWebhook.Dock = System.Windows.Forms.DockStyle.Fill;
             this.testStartWebhook.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.testStartWebhook.Location = new System.Drawing.Point(3, 345);
+            this.testStartWebhook.Location = new System.Drawing.Point(3, 223);
             this.testStartWebhook.Name = "testStartWebhook";
-            this.testStartWebhook.Size = new System.Drawing.Size(335, 80);
+            this.testStartWebhook.Size = new System.Drawing.Size(215, 50);
             this.testStartWebhook.TabIndex = 2;
-            this.testStartWebhook.Text = "Отправить тестовое оповещение";
+            this.testStartWebhook.Text = "Отправить тестовое оповещение\r\nО начале стрима\r\n";
             this.testStartWebhook.UseVisualStyleBackColor = true;
             this.testStartWebhook.Click += new System.EventHandler(this.testWebhook_Click);
             // 
@@ -92,16 +92,16 @@
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 40F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 20F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(682, 428);
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(442, 276);
             this.tableLayoutPanel1.TabIndex = 3;
             // 
             // openStopSettings
             // 
             this.openStopSettings.Dock = System.Windows.Forms.DockStyle.Fill;
             this.openStopSettings.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.openStopSettings.Location = new System.Drawing.Point(344, 174);
+            this.openStopSettings.Location = new System.Drawing.Point(224, 113);
             this.openStopSettings.Name = "openStopSettings";
-            this.openStopSettings.Size = new System.Drawing.Size(335, 165);
+            this.openStopSettings.Size = new System.Drawing.Size(215, 104);
             this.openStopSettings.TabIndex = 3;
             this.openStopSettings.Text = "Настройка оповещения\r\nО конце стрима";
             this.openStopSettings.UseVisualStyleBackColor = true;
@@ -111,9 +111,9 @@
             // 
             this.testStopWebhook.Dock = System.Windows.Forms.DockStyle.Fill;
             this.testStopWebhook.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.testStopWebhook.Location = new System.Drawing.Point(344, 345);
+            this.testStopWebhook.Location = new System.Drawing.Point(224, 223);
             this.testStopWebhook.Name = "testStopWebhook";
-            this.testStopWebhook.Size = new System.Drawing.Size(335, 80);
+            this.testStopWebhook.Size = new System.Drawing.Size(215, 50);
             this.testStopWebhook.TabIndex = 4;
             this.testStopWebhook.Text = "Отправить тестовое оповещение\r\nО конце стрима";
             this.testStopWebhook.UseVisualStyleBackColor = true;
@@ -123,7 +123,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(682, 428);
+            this.ClientSize = new System.Drawing.Size(442, 276);
             this.Controls.Add(this.tableLayoutPanel1);
             this.MinimumSize = new System.Drawing.Size(260, 250);
             this.Name = "Form1";

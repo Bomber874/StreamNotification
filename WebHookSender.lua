@@ -9,7 +9,7 @@ function on_event(event)
 end
 
 function script_description()
-	return "При старте стрима, оповестит дискорд"
+	return "При старте/окончании стрима, об этом узнает дискорд"
 end
 
 function script_load(settings)

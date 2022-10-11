@@ -1,11 +1,6 @@
-﻿using IniParser.Model;
-using IniParser;
-using System;
-using System.Security.Policy;
+﻿using System;
 using System.Windows.Forms;
-using System.IO;
 using System.Collections.Generic;
-using WebhookSenderForOBS.Properties;
 
 namespace WebhookSenderForOBS
 {
@@ -25,7 +20,7 @@ namespace WebhookSenderForOBS
             }
             else
             {
-                KeyDataCollection settings;
+                Dictionary<string, string> settings;
                 try
                 {
                     settings = Settings.Get(args[0]); // Если нет такой секции, должно вернуться null

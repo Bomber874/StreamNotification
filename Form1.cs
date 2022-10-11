@@ -1,5 +1,4 @@
-﻿using IniParser;
-using System;
+﻿using System;
 using System.IO;
 using System.Text;
 using System.Windows.Forms;
@@ -11,7 +10,7 @@ namespace WebhookSenderForOBS
         public Form1()
         {
             InitializeComponent();
-            if (!File.Exists("StreamNotification/config.ini"))
+            if (!File.Exists("StreamNotification/settings"))
             {
                 Settings.Setup();
             }
