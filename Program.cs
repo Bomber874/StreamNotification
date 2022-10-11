@@ -3,6 +3,8 @@ using IniParser;
 using System;
 using System.Security.Policy;
 using System.Windows.Forms;
+using System.IO;
+using System.Collections.Generic;
 
 namespace WebhookSenderForOBS
 {
@@ -12,7 +14,7 @@ namespace WebhookSenderForOBS
         /// Главная точка входа для приложения.
         /// </summary>
         [STAThread]
-        static void Main(String[] args)
+        static void Main(string[] args)
         {
             if (args.Length == 0)
             {
@@ -22,9 +24,18 @@ namespace WebhookSenderForOBS
             }
             else
             {
-                var parser = new FileIniDataParser();
-                IniData data = parser.ReadFile("StreamNotification/config.ini");
-                Webhook webhook = new Webhook(data["Settings"]["url"], data["Settings"]["name"], data["Settings"]["icon"], data["Settings"]["text"]);
+                KeyDataCollection settings;
+                try
+                {
+                    settings = Settings.Get(args[0]); // Если нет такой секции, должно вернуться null
+                }
+                catch(Exception e)
+                {
+                    MessageBox.Show(e.ToString(), "Ошибка", MessageBoxButtons.OK);
+                    return;
+                }
+                
+                Webhook webhook = new Webhook(settings["url"], settings["name"], settings["icon"], settings["text"]);
                 webhook.Send();
             }
         }

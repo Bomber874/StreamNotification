@@ -1,30 +1,22 @@
-﻿using IniParser;
-using IniParser.Model;
-using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System;
 using System.Windows.Forms;
 
 namespace WebhookSenderForOBS
 {
     public partial class SendWebhookForm : Form
     {
-        public SendWebhookForm()
+        protected string _type;
+        public SendWebhookForm(string type)
         {
+            _type = type;
             InitializeComponent();
         }
 
         private void sendTestWH_Click(object sender, EventArgs e)
         {
             string url = Clipboard.GetText();
-            var parser = new FileIniDataParser();
-            IniData data = parser.ReadFile("StreamNotification/config.ini");
-            Webhook webhook = new Webhook(url, data["Settings"]["name"], data["Settings"]["icon"], data["Settings"]["text"]);
+            var settings = Settings.Get(_type);
+            Webhook webhook = new Webhook(url, settings["name"], settings["icon"], settings["text"]);
             webhook.Send();
         }
     }

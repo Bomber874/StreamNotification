@@ -1,7 +1,9 @@
-﻿using System;
+﻿using IniParser.Model;
+using System;
 using System.Collections.Specialized;
 using System.Net;
 using System.Windows.Forms;
+using System.Xml.Linq;
 
 namespace WebhookSenderForOBS
 {
@@ -25,10 +27,7 @@ namespace WebhookSenderForOBS
             _imageURL = profile;
             _text = message;
         }
-        /// <summary>
-        /// Отправляет вебхук
-        /// </summary>
-        public void Send()
+        protected void _Send(string hookURL, string name, string profile, string message)
         {
             if (!Uri.IsWellFormedUriString(_hookURL, UriKind.Absolute))
                 MessageBox.Show($"Не удалось распознать ссылку на вебхук:\n{_hookURL}", "Ошибка", MessageBoxButtons.OK);
@@ -37,7 +36,7 @@ namespace WebhookSenderForOBS
             webhookInfo.Add("avatar_url", _imageURL);
             webhookInfo.Add("content", _text);
 
-            try 
+            try
             {
                 new WebClient().UploadValues(_hookURL, webhookInfo);
             }
@@ -49,14 +48,28 @@ namespace WebhookSenderForOBS
             //{
             //    MessageBox.Show($"Некорректная ссылка на вебхук\n{e.Message}", "Ошибка", MessageBoxButtons.OK);
             //}
-            catch(WebException e)
+            catch (WebException e)
             {
-                if(Uri.IsWellFormedUriString(_imageURL, UriKind.Absolute))
+                if (Uri.IsWellFormedUriString(_imageURL, UriKind.Absolute))
                     MessageBox.Show($"Ошибка на сервере:\n{e.Message}", "Ошибка", MessageBoxButtons.OK);
                 else
                     MessageBox.Show($"Кажется эта ссылка на изображение не подходит.\nУказанная ссылка:{_imageURL}", "Ошибка", MessageBoxButtons.OK);
             }
-            
+        }
+        /// <summary>
+        /// Отправляет вебхук
+        /// </summary>
+        public void Send()
+        {
+            _Send(_hookURL, _name, _imageURL, _text);
+        }
+        /// <summary>
+        /// Отправляет вебхук
+        /// </summary>
+        /// <param name="settings"></param>
+        public void Send(KeyDataCollection settings)
+        {
+            _Send(settings["url"], settings["name"], settings["image"], settings["text"]);
         }
     }
 }

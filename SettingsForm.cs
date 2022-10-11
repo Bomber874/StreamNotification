@@ -1,29 +1,26 @@
 ﻿using IniParser.Model;
 using IniParser;
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
-using System.IO;
+
 
 namespace WebhookSenderForOBS
 {
     public partial class SettingsForm : Form
     {
-        public SettingsForm()
+        string _type; // Хранится start или stop, чтобы понять настройки для какого действия редактировать
+        public SettingsForm(string type)
         {
+            _type = type;
             InitializeComponent();
             var parser = new FileIniDataParser();
+
             IniData data = parser.ReadFile("StreamNotification/config.ini");
-            urlText.Text = data["Settings"]["url"];
-            nameText.Text = data["Settings"]["name"];
-            iconText.Text = data["Settings"]["icon"];
-            textText.Text = data["Settings"]["text"];
+            urlText.Text = data[_type]["url"];
+            nameText.Text = data[_type]["name"];
+            iconText.Text = data[_type]["icon"];
+            textText.Text = data[_type]["text"].Replace("\\n", Environment.NewLine);
         }
 
         private void pasteButton_Click(object sender, EventArgs e)
@@ -49,10 +46,13 @@ namespace WebhookSenderForOBS
         {
             var parser = new FileIniDataParser();
             IniData data = parser.ReadFile("StreamNotification/config.ini", Encoding.UTF8);
-            data["Settings"]["url"] = urlText.Text;
-            data["Settings"]["name"] = nameText.Text;
-            data["Settings"]["icon"] = iconText.Text;
-            data["Settings"]["text"] = textText.Text;
+            data[_type]["url"] = urlText.Text;
+            data[_type]["name"] = nameText.Text;
+            data[_type]["icon"] = iconText.Text;
+            // Немного прогадался со способом сохранения текста. ini не поддерживает многострочные значения
+            // Из-за этого теперь нельзя использовать \n в тексте оповещения.
+            // Однако \n и так наверное нельзя использовать, дискорд бы распознал это как перевод строки
+            data[_type]["text"] = textText.Text.Replace(Environment.NewLine, "\\n"); 
             parser.WriteFile("StreamNotification/config.ini", data);
             Close();
         }
