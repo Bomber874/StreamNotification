@@ -24,3 +24,13 @@
 
 2.4) Выберите файл obs-studio\bin\64bit\StreamNotification\WebHookSender.lua
 > Если такого файла нет, обратитесь к пункту 1.3-1.4
+
+# Интерфейс программы
+## Главное меню:
+![изображение](https://user-images.githubusercontent.com/68012613/195149405-08c5fe47-faab-4adb-b82a-7fbbfdfe2d4d.png)
+
+## Меню настроек:
+![изображение](https://user-images.githubusercontent.com/68012613/195149576-0144ea85-4b71-419a-81f2-87789976618f.png)
+
+## Меню тестового оповещения:
+![изображение](https://user-images.githubusercontent.com/68012613/195149680-55d94513-b641-4779-9727-2bef772d1a95.png)
