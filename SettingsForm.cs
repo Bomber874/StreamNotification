@@ -46,6 +46,7 @@ namespace WebhookSenderForOBS
             data["icon"] = iconText.Text;
             data["text"] = textText.Text;
             Settings.Save(_type, data);
+            Close();
         }
     }
 }

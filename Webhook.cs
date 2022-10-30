@@ -29,7 +29,10 @@ namespace WebhookSenderForOBS
         protected void _Send(string hookURL, string name, string profile, string message)
         {
             if (!Uri.IsWellFormedUriString(hookURL, UriKind.Absolute))
+            {
                 MessageBox.Show($"Не удалось распознать ссылку на вебхук:\n{hookURL}", "Ошибка", MessageBoxButtons.OK);
+                return;
+            }
             NameValueCollection webhookInfo = new NameValueCollection();
             webhookInfo.Add("username", name);
             webhookInfo.Add("avatar_url", profile);

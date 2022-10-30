@@ -6,6 +6,7 @@ namespace WebhookSenderForOBS
 {
     internal static class Program
     {
+        public const string VERSION = "1.1";
         /// <summary>
         /// Главная точка входа для приложения.
         /// </summary>
@@ -14,6 +15,7 @@ namespace WebhookSenderForOBS
         {
             if (args.Length == 0)
             {
+                Update.CheckUpdate();
                 Application.EnableVisualStyles();
                 Application.SetCompatibleTextRenderingDefault(false);
                 Application.Run(new Form1());

@@ -46,7 +46,7 @@
             this.createLuaFile.Name = "createLuaFile";
             this.createLuaFile.Size = new System.Drawing.Size(436, 104);
             this.createLuaFile.TabIndex = 0;
-            this.createLuaFile.Text = "Создать lua скрипт";
+            this.createLuaFile.Text = "Создать/Обновить lua скрипт";
             this.createLuaFile.UseVisualStyleBackColor = true;
             this.createLuaFile.Click += new System.EventHandler(this.createLuaFile_Click);
             // 
