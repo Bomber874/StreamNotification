@@ -34,3 +34,6 @@
 
 ## Меню тестового оповещения:
 ![изображение](https://user-images.githubusercontent.com/68012613/195149680-55d94513-b641-4779-9727-2bef772d1a95.png)
+
+## Настройки скрипта в obs:
+![изображение](https://user-images.githubusercontent.com/68012613/198896010-5498565a-6005-4b75-afbf-d598733197a0.png)
